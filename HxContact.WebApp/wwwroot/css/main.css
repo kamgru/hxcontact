@@ -5,4 +5,6 @@ main.htmx-swapping {
 main {
     opacity: 1;
     transition: opacity 0.1s ease-out;
+    margin: 0 auto;
+    max-width: 900px;
 }
