@@ -1,0 +1,19 @@
+@model HxContact.WebApp.Pages.Contacts
+@using Microsoft.AspNetCore.Antiforgery
+@inject IAntiforgery Antiforgery
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<form hx-post="/contacts"
+      hx-headers='{"RequestVerificationToken": "@Antiforgery.GetAndStoreTokens(Context).RequestToken"}'
+      hx-swap="outerHTML">
+    <div asp-validation-summary="All"></div>
+    <div>
+        <label>Name</label>
+        <input type="text" asp-for="FormData.Name" placeholder="Name"/>
+    </div>
+    <div>
+        <label>E-mail</label>
+        <input type="email"  asp-for="FormData.Email" placeholder="E-mail"/>
+    </div>
+    <button type="submit">Add Contact</button>
+</form>

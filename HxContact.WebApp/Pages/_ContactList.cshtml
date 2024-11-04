@@ -1,0 +1,19 @@
+@using HxContact.WebApp.Pages
+@model HxContact.WebApp.Pages.ContactListViewModel
+
+@if (Model.Contacts.Count > 0)
+{
+    @foreach (Contact contact in Model.Contacts.Take(Model.Contacts.Count - 1))
+    {
+        <tr hx-get="/contacts/@contact.Id" hx-push-url="true" hx-target="main" hx-swap="innerHTML swap:0.1s">
+            @await Html.PartialAsync("_ContactListItem", contact)
+        </tr>
+    }
+
+    @if (Model.Contacts.Count > 1)
+    {
+        <tr hx-get="/contacts?handler=loadmore&pagenumber=@(Model.Page + 1)" hx-trigger="revealed" hx-swap="afterend">
+            @await Html.PartialAsync("_ContactListItem", Model.Contacts.Last())
+        </tr>
+    }
+}

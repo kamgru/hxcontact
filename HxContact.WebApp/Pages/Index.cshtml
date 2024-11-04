@@ -1,0 +1,17 @@
+@page
+@model HxContact.WebApp.Pages.Index
+
+@{
+    Layout = "_Layout";
+}
+
+<h1>Welcome to HxContact!</h1>
+<p>This is a sample app written with HTMX and Asp Net Core.</p>
+<button hx-get="/contacts"
+        hx-push-url="true"
+        hx-target="main"
+        hx-swap="innerHTML swap:0.1s"
+        >
+    Show Contacts
+    <img src="images/spinner.gif" width="24 px" height="24 px" class="htmx-indicator" alt="loading...">
+</button>

@@ -1,0 +1,11 @@
+@model HxContact.WebApp.Pages.Contacts
+
+@Html.Partial("_AddContactForm", Model)
+
+<template>
+    <tbody hx-swap-oob="afterbegin" id="contacts">
+    <tr>
+        @Html.Partial("_ContactListItem", Model.Contact)
+    </tr>
+    </tbody>
+</template>

@@ -1,0 +1,18 @@
+@page "/contacts"
+@model HxContact.WebApp.Pages.Contacts
+
+@Html.Partial("_AddContactForm")
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody id="contacts">
+    @{
+        @Html.Partial("_ContactList", Model.ContactList)
+    }
+    </tbody>
+</table>
